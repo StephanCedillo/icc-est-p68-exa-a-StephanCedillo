@@ -60,12 +60,12 @@ jobs:
         continue-on-error: true
         run: |
           mkdir -p resultados
-          java -jar tools/junit-platform-console-standalone-1.7.0.jar \
-                --class-path "bin:lib/*" \
-                --select-class "test.LeagueControllerTest" \
-                --details tree \
-                --disable-ansi-colors \
-                --reports-dir resultados/ \
+          java -cp "tools/junit-platform-console-standalone-1.10.2.jar:bin:lib/*" \
+            org.junit.platform.console.ConsoleLauncher \
+            --select-class "test.LeagueControllerTest" \
+            --details tree \
+            --disable-ansi-colors \
+            --reports-dir resultados/ \
           | tee resultados/salida.txt
 
       - name: Leer nombre, correo y fila del estudiante
