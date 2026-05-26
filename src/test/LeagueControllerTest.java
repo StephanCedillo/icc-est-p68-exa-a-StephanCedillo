@@ -83,8 +83,11 @@ public class LeagueControllerTest {
     @Test
     @DisplayName("Test 1: Validar getTotalActiveGoals() - Calculo de goles activos")
     public void testGetTotalActiveGoals() {
+        System.out.println("Ejecutando Test 1: Validar getTotalActiveGoals()");
+
         League[] leagues = LeagueTestData.createLeagues();
         LeagueValidators.validarCalculoTotalActiveGoals(leagues);
+        System.out.println("Test 1 finalizado correctamente");
     }
 
     @Test
