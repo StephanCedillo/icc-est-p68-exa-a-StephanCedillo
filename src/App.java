@@ -1,3 +1,5 @@
+import controllers.LeagueController;
+import models.*;
 
 public class App {
 
@@ -156,25 +158,43 @@ public class App {
                                 "Bienvenido al sistema de ligas de futbol. Por favor configure su fila en student.env y ejecute los tests automaticos para validar su implementacion.");
                 // TODO: Imprimir listado original
                 // Ejemplo:
-                // System.out.println("Listado original:");
-                // controller.printLeagues(leagues);
-
+                LeagueController lController  = new LeagueController();
+                System.out.println("Listado original:");
+                League[] leagues = getLeagues();
+                lController.printLeagues(leagues);
+                League[] leaguesCopy = getLeagues().clone();
                 // TODO: Crear una copia del arreglo y aplicar el metodo de ordenamiento de su
                 // fila
-                // Fila A: controller.sortSelectionAsc(copia)
+                lController.sortSelectionAsc(leaguesCopy);
                 // Fila B: controller.sortInsertionDesc(copia)
 
                 // TODO: Imprimir listado ordenado
                 // Ejemplo:
-                // System.out.println("Listado ordenado:");
-                // controller.printLeagues(copia);
+                System.out.println();
+                 System.out.println("Listado ordenado:");
+                 lController.printLeagues(leaguesCopy);
 
                 // TODO: Realizar busqueda 1 e imprimir si se encontro o no
                 // Fila A: buscar 42 goles activos
                 // Fila B: buscar 67 goles activos
-
+                System.out.println("\n Busqueda de elementos: \n ");
+                League leagueFind = lController.binarySearchByTotalActiveGoals(leaguesCopy, 42);
+                if (leagueFind == null) {
+                        System.out.println("No se encontro la cantidad de goles activos");
+                }else{
+                        System.out.println("Liga encontrada: " +  leagueFind);
+                }
+                
+                leagueFind = lController.binarySearchByTotalActiveGoals(leaguesCopy, 55);
+                if (leagueFind == null) {
+                        System.out.println("No se encontro la cantidad de goles activos");
+                }else{
+                        System.out.println("Liga encontrada: " +  leagueFind);
+                }
                 // TODO: Realizar busqueda 2 e imprimir si se encontro o no
                 // Fila A: buscar 55 goles activos
                 // Fila B: buscar 40 goles activos
+
+                
         }
 }
